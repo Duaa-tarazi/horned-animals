@@ -17,14 +17,14 @@ class HornedBeasts extends React.Component {
         this.setState({
             numOfClicks: this.state.numOfClicks + 1, 
         })
-        this.props.showing();
-        this.props.getSelectedBeastData(this.props.image_url,this.props.title,this.props.description)
+        // this.props.showing();
+        // this.props.getSelectedBeastData(this.props.image_url,this.props.title,this.props.description)
     };
 
     getSelectedData=()=>{
-        this.props.showing();
-        this.props.getSelectedBeastData(this.props.image_url,this.props.title,this.props.description)
-        this.props.incrementNumofLikes();
+        // this.props.showing();
+        this.props.getSelectedBeastData(this.props.image_url,this.props.title,this.props.description,true)
+        // this.props.incrementNumofLikes();
          
     };
 
@@ -33,7 +33,7 @@ class HornedBeasts extends React.Component {
         return (
             <Col>
                 <Card style={{ width: '18rem' }} onClick={this.incrementNumofLikes}>
-                    <Card.Img variant="top" src={this.props.image_url} />
+                    <Card.Img onClick={this.getSelectedData} variant="top" src={this.props.image_url} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>

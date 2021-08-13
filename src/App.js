@@ -4,9 +4,10 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/esm/Row';
+import SelectedBeast from './SelectedBeast';
 import datajson from './data.json';
-import HornsForm from './components/HornsForm';
-import selectedBeast from './selectedBeast'
+// import HornsForm from './components/HornsForm';
+// import Form from 'react-bootstrap/esm/Form'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,10 +15,10 @@ class App extends React.Component {
     this.state = {
       show: false,
       title: '',
-      src: '',
+      image_url: '',
       description: '',
-      dataNew: datajson
-    
+      // dataNew: datajson
+
     }
   }
   handleOpen = () => {
@@ -28,19 +29,21 @@ class App extends React.Component {
   handleClose = () => {
     this.setState({
       show: false
-    })}
-    getSelectedBeastData = (title, src, description) => {
-      this.setState({
-        title: title,
-        src: src,
-        description: description
-      })
-    }
-  
+    })
+  }
+  getSelectedBeastData = (title, image_url, description) => {
+    this.setState({
+      title: title,
+      image_url: image_url,
+      description: description,
+      show:true
+    })
+  }
+
   // getNumOfHorns = (event) => {
   //   let horns = event.target.value;
 
-  //   let filterData1 = data.filter((item) => {
+  //   let filterData1 = dataNew.filter((item) => {
 
   //     if (item.horns == horns){
   //       this.setState({
@@ -50,35 +53,44 @@ class App extends React.Component {
   // }}
 
 
-  // getNumOfHorns = (event) => {
-  //   let horns = event.target.value; 
-  // }
-  
+ 
 
   render() {
-      return(
+    return (
       <>
         <Header />
-        <br></br>
-      <HornsForm/>
+
+       
+        {/* // <Form>
+        //   <Form.Lable>HOW MANY HOURNS?</Form.Lable>
+        //   <Form.Select aria-label="Default select example" onChange={this.getNumOfHorns}>
+        //     <option value="all">All</option>
+        //     <option value="1">One</option>
+        //     <option value="2">Two</option>
+        //     <option value="3">Three</option>
+        //     <option value="Wooow">Woow</option>
+        //   </Form.Select>
+        // </Form> */}
+        
+        {/* <HornsForm /> */}
         <Row xs={1} md={3} className="g-4">
           <Main
-            dataNew={this.state.dataNew}
-            handleOpen={this.handleOpen}
+            datajson={datajson}
+            // handleOpen={this.handleOpen}
             getSelectedBeastData={this.getSelectedBeastData}
           />
         </Row>
-        <selectedBeast
+        <SelectedBeast
           show={this.state.show}
           handleClose={this.handleClose}
           title={this.state.title}
-          src={this.state.src}
+          image_url={this.state.image_url}
           description={this.state.description}
-          getSelectedBeastData={this.getSelectedBeastData}
-       
+          // getSelectedBeastData={this.getSelectedBeastData}
+
 
         />
-       
+
         <Footer />
       </>
     )
