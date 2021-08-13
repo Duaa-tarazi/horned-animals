@@ -5,20 +5,14 @@ import HornedBeasts from './HornedBeasts';
 
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data:this.props.datajson ,
-
-    }
-  }
+ 
   render(){
     return(
-      this.state.data.map(item => {
+      this.props.dataNew.map(item => {
         return (
       <HornedBeasts
               title={item.title}
-              imageUrl={item.image_url}
+              image_url={item.image_url}
               description={item.description}
               handleopen={this.props.handleopen}
               getSelectedData={this.props.getSelectedData}        
@@ -28,8 +22,9 @@ class Main extends React.Component {
         }
       ))
 
-  }}
+  }
+}
 
-        
+
     
  export default Main;

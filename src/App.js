@@ -7,7 +7,8 @@ import Row from 'react-bootstrap/esm/Row';
 import datajson from './data.json';
 import selectedBeast from './selectedBeast';
 import Form from 'react-bootstrap/esm/Form';
-import { data } from 'jquery';
+
+//import Modal from './Modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class App extends React.Component {
       title: '',
       src: '',
       description: '',
-      filteredDatajson: datajson
+      dataNew:datajson
+    
     }
   }
   handleOpen = () => {
@@ -28,7 +30,7 @@ class App extends React.Component {
   handleClose = () => {
     this.setState({
       show: false
-    })
+    })}
     getSelectedBeastData = (title, src, description) => {
       this.setState({
         title: title,
@@ -36,21 +38,30 @@ class App extends React.Component {
         description: description
       })
     }
-  }
+  
+  // getNumOfHorns = (event) => {
+  //   let horns = event.target.value;
+
+  //   let filterData1 = data.filter((item) => {
+
+  //     if (item.horns == horns){
+  //       this.setState({
+  //         filteredDatajson: filterData1
+  //       })
+  //   }
+  // }}
+
+
   getNumOfHorns = (event) => {
-    let horns = event.target.value;
-    let filterData1 = data.filter((item) => {
-      if (item.horns == horns)
-      
-    this.setState({
-      filteredDatajson: filterData1
-    });
+    let horns = event.target.value; 
   }
+  
 
   render() {
-    return (
+      return(
       <>
         <Header />
+        <Form>
         <Form.Lable>HOW MANY HOURS?</Form.Lable>
         <Form.Select aria-label="Default select example" onChange={this.getNumOfHorns}>
           <option value="all">All</option>
@@ -59,9 +70,10 @@ class App extends React.Component {
           <option value="3">Three</option>
           <option value="Wooow">Woow</option>
         </Form.Select>
+        </Form>
         <Row xs={1} md={3} className="g-4">
           <Main
-            datajson={this.state.filterData}
+            datajson={this.state.dataNew}
             handleOpen={this.handleOpen}
             getSelectedBeastData={this.getSelectedBeastData}
           />
@@ -73,6 +85,7 @@ class App extends React.Component {
           src={this.state.src}
           description={this.state.description}
         />
+       
         <Footer />
       </>
     )

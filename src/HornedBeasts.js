@@ -14,18 +14,17 @@ class HornedBeasts extends React.Component {
     }
     incrementNumofLikes = () => {
         this.setState({
-            numOfClicks: this.state.numOfClicks + 1
+            numOfClicks: this.state.numOfClicks + 1, 
         })
-    }
-    getSelectedData=() =>{
-        this.props.handleopen();
-        this.props.getSelectedData(this.props.imageUrl,this.props.title,this.props.description,this.state.numOfClicks)
+        this.props.handleOpen();
+        this.props.getSelectedData(this.props.image_url,this.props.title,this.props.description)
     };
+
     render() {
         return (
             <Col>
-                <Card style={{ width: '18rem' }} onClick={this.getSelectedData}>
-                    <Card.Img onClick={this.incrementNumofLikes} variant="top" src={this.props.imageUrl} />
+                <Card style={{ width: '18rem' }} onClick={this.incrementNumofLikes}>
+                    <Card.Img variant="top" src={this.props.image_url} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>
