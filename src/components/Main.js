@@ -1,5 +1,5 @@
 import React from 'react';
-import HornedBeasts from './HornedBeasts';
+import HornedBeasts from "./HornedBeasts"
 
 
 
@@ -14,8 +14,11 @@ class Main extends React.Component {
               title={item.title}
               image_url={item.image_url}
               description={item.description}
-              handleopen={this.props.handleopen}
-              getSelectedData={this.props.getSelectedData}        
+              showing={this.props.handleOpen}
+              getSelectedBeastData={this.props.getSelectedBeastData}
+            
+            
+      
             />
 
     )

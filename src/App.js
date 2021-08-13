@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/esm/Row';
 import datajson from './data.json';
-import selectedBeast from './selectedBeast';
-import Form from 'react-bootstrap/esm/Form';
-
-//import Modal from './Modal';
+import HornsForm from './components/HornsForm';
+import selectedBeast from './selectedBeast'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +16,7 @@ class App extends React.Component {
       title: '',
       src: '',
       description: '',
-      dataNew:datajson
+      dataNew: datajson
     
     }
   }
@@ -52,28 +50,20 @@ class App extends React.Component {
   // }}
 
 
-  getNumOfHorns = (event) => {
-    let horns = event.target.value; 
-  }
+  // getNumOfHorns = (event) => {
+  //   let horns = event.target.value; 
+  // }
   
 
   render() {
       return(
       <>
         <Header />
-        <Form>
-        <Form.Lable>HOW MANY HOURS?</Form.Lable>
-        <Form.Select aria-label="Default select example" onChange={this.getNumOfHorns}>
-          <option value="all">All</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="Wooow">Woow</option>
-        </Form.Select>
-        </Form>
+        <br></br>
+      <HornsForm/>
         <Row xs={1} md={3} className="g-4">
           <Main
-            datajson={this.state.dataNew}
+            dataNew={this.state.dataNew}
             handleOpen={this.handleOpen}
             getSelectedBeastData={this.getSelectedBeastData}
           />
@@ -84,6 +74,9 @@ class App extends React.Component {
           title={this.state.title}
           src={this.state.src}
           description={this.state.description}
+          getSelectedBeastData={this.getSelectedBeastData}
+       
+
         />
        
         <Footer />

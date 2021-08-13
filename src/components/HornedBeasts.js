@@ -12,13 +12,22 @@ class HornedBeasts extends React.Component {
         }
 
     }
+
     incrementNumofLikes = () => {
         this.setState({
             numOfClicks: this.state.numOfClicks + 1, 
         })
-        this.props.handleOpen();
-        this.props.getSelectedData(this.props.image_url,this.props.title,this.props.description)
+        this.props.showing();
+        this.props.getSelectedBeastData(this.props.image_url,this.props.title,this.props.description)
     };
+
+    getSelectedData=()=>{
+        this.props.showing();
+        this.props.getSelectedBeastData(this.props.image_url,this.props.title,this.props.description)
+        this.props.incrementNumofLikes();
+         
+    };
+
 
     render() {
         return (
